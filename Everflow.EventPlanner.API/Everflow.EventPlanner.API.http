@@ -1,0 +1,6 @@
+@Everflow.EventPlanner.API_HostAddress = http://localhost:5113
+
+GET {{Everflow.EventPlanner.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

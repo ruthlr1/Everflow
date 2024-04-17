@@ -1,0 +1,16 @@
+Everflow.EventPlanner.API/bin/
+Everflow.EventPlanner.API/obj/
+Everflow.EventPlanner.Application.Tests/bin/
+Everflow.EventPlanner.Application.Tests/obj/
+Everflow.EventPlanner.Application/obj/
+Everflow.EventPlanner.Domain/bin/
+Everflow.EventPlanner.Domain/obj/
+Everflow.EventPlanner.Persistence/bin/
+Everflow.EventPlanner.Persistence/obj/
+Everflow.EventPlanner.UI.Tests/bin/
+Everflow.EventPlanner.UI.Tests/obj/
+Everflow.EventPlanner/.vs/Everflow.EventPlanner/DesignTimeBuild/.dtbcache.v2
+Everflow.EventPlanner/.vs/
+Everflow.EventPlanner/bin/
+Everflow.EventPlanner/obj/
+Everflow.EventPlanner.Application/bin/
