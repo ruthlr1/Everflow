@@ -11,12 +11,12 @@ namespace Everflow.EventPlanner.Domain.Features.Events
     public class EventDetail : EntityBase
     {
         public int EventDetailId { get; set; }
-        public required string EventDetailDescription { get; set; }
+        public string? EventDetailDescription { get; set; }
         public DateTime EventDetailDate { get; set; }
         public TimeSpan EventDetailStartTime { get; set; }
         public TimeSpan EventDetailEndTime { get; set; }
         public string? EventDetailColour { get; set; }
 
-        public virtual ICollection<EventPerson>? EventPersons { get; set;}
+        public virtual ICollection<EventPerson> EventPersons { get; set;}
     }
 }

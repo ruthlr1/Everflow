@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Everflow.EventPlanner.Application.Features.People.QueryList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,5 @@ namespace Everflow.EventPlanner.Application.Features.Events.QueryList
 {
     public class EventDetailLookupModel : EventDetailModel
     {
-
     }
 }
