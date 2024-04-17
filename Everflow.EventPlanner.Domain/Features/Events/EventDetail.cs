@@ -15,7 +15,6 @@ namespace Everflow.EventPlanner.Domain.Features.Events
         public DateTime EventDetailDate { get; set; }
         public TimeSpan EventDetailStartTime { get; set; }
         public TimeSpan EventDetailEndTime { get; set; }
-        public string? EventDetailColour { get; set; }
 
         public virtual ICollection<EventPerson> EventPersons { get; set;}
     }

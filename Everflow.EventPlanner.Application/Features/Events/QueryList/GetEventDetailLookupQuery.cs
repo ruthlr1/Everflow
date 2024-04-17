@@ -34,7 +34,6 @@ namespace Everflow.EventPlanner.Application.Features.Events.QueryList
                                             EventDetailId = x.EventDetailId,
                                             EventDetailDescription = x.EventDetailDescription,
                                             EventDetailDate = x.EventDetailDate,
-                                            EventDetailColour = x.EventDetailColour,
                                         }).ToListAsync(cancellationToken);
         }
     }

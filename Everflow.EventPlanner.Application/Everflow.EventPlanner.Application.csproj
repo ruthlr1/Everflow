@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Everflow.EventPlanner.Domain\Everflow.EventPlanner.Domain.csproj" />
+    <ProjectReference Include="..\Everflow.EventPlanner.Persistence\Everflow.EventPlanner.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

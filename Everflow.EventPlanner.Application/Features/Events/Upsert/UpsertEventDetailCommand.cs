@@ -58,14 +58,13 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
             {
                 dbModel = _context.EventDetails.Where(x => x.EventDetailId == request.EventDetailId).FirstOrDefault();
                 if (dbModel == null)
-                    throw new EntityNotFoundException(typeof(EventDetail), request.EventDetailId);
+                    throw new EntityNotFoundException(nameof(EventDetail), request.EventDetailId);
             }
 
             dbModel.EventDetailDescription = request.EventDetailDescription;
             dbModel.EventDetailDate = request.EventDetailDate;
             dbModel.EventDetailStartTime = request.EventDetailStartTime;
             dbModel.EventDetailEndTime = request.EventDetailEndTime;
-            dbModel.EventDetailColour = request.EventDetailColour;
 
             if (addNew)
             {

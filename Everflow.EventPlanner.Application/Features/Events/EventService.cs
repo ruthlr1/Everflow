@@ -31,7 +31,7 @@ namespace Everflow.EventPlanner.Application.Features.Events
         {
             var dbModel = await _context.EventDetails.Include(x => x.EventPersons).ThenInclude(x => x.Person).AsNoTracking().Where(x => x.EventDetailId == eventDetailId).FirstOrDefaultAsync();
             if (dbModel == null)
-                throw new EntityNotFoundException(typeof(EventDetail), eventDetailId);
+                throw new EntityNotFoundException(nameof(EventDetail), eventDetailId);
 
 
             return UpsertEventDetailCommandMapper.MapFromDB(dbModel);
