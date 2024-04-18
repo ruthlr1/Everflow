@@ -1,0 +1,52 @@
+﻿@inherits PersonEditBase
+
+@page "/people/new"
+@page "/people/{Id:int}"
+
+<PageTitle>@($"People[{Id}]")</PageTitle>
+
+<h3>People</h3>
+
+<EditForm Model="Model" OnSubmit="SubmitForm">
+    <Blazored.FluentValidation.FluentValidationValidator />
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>First Name </label>
+                <InputText @bind-Value=Model.FirstName />
+                <ValidationMessage For="@(() => Model.FirstName)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Last Name </label>
+                <InputText @bind-Value=Model.LastName />
+                <ValidationMessage For="@(() => Model.LastName)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Email Address </label>
+                <InputText @bind-Value=Model.EmailAddress />
+                <ValidationMessage For="@(() => Model.EmailAddress)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success mx-2">Save</button>
+                <button type="submit" class="btn btn-secondary mx-2" @onclick=NavBack>Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</EditForm>
