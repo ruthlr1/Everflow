@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,8 +20,9 @@ namespace Everflow.EventPlanner.UI
 
             services.AddScoped(typeof(IPersonService), typeof(PersonService));
             services.AddScoped(typeof(IEventService), typeof(EventService));
-            
 
+
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
     }
 }

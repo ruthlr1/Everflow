@@ -1,8 +1,11 @@
+using Everflow.EventPlanner.Application.Features.Events;
+using Everflow.EventPlanner.Application.Features.People;
 using Everflow.EventPlanner.Persistence.Database;
 using Everflow.EventPlanner.UI;
 using Everflow.EventPlanner.UI.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<EverflowContext>(options => options.UseSqlServer(connectionString));
 
 ServiceRegistry.Register(builder.Services);
+
 
 var app = builder.Build();
 
