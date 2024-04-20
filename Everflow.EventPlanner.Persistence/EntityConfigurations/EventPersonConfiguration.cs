@@ -15,11 +15,13 @@ namespace Everflow.EventPlanner.Persistence.EntityConfigurations
     {
         public override void Configure(EntityTypeBuilder<EventPerson> builder)
         {
+            base.Configure(builder);
             builder.ToTable(nameof(EventPerson));
             builder.Property(x => x.EventDetailId).IsRequired();
             builder.Property(x => x.PersonId).IsRequired();
 
-            base.Configure(builder);
+            builder.HasIndex(x => new { x.PersonId, x.EventDetailId }).IsUnique();
+
         }
     }
 }

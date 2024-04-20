@@ -16,7 +16,7 @@ namespace Everflow.EventPlanner.Application.Features.People.Upsert
 {
     public class UpsertPersonCommand : PersonModel, IRequest<UpdateResult>
     {
-
+        public string ConfirmedPassword { get; set; }
     }
 
     public class UpsertPersonCommandMapper

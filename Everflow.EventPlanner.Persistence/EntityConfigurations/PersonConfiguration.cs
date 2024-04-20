@@ -10,16 +10,16 @@ using Everflow.EventPlanner.Persistence.Common;
 
 namespace Everflow.EventPlanner.Persistence.EntityConfigurations
 {
-    public class PersonConfiguration : EntityBaseConfiguration<Person>
+    public class PersonConfiguration : IEntityTypeConfiguration<Person>
     {
-        public override void Configure(EntityTypeBuilder<Person> builder)
+        public void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.ToTable(nameof(Person));
-            builder.Property(x => x.FirstName).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.LastName).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.EmailAddress).HasMaxLength(100);
+            builder.Property(x => x.FirstName);
+            builder.Property(x => x.LastName);
+            builder.Property(x => x.EmailAddress);
+            builder.Property(x => x.Password);
 
-            base.Configure(builder);
         }
     }
 }

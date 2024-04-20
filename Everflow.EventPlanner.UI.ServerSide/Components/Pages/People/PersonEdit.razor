@@ -48,6 +48,24 @@
 
     <div class="row">
         <div class="col">
+                <div class="form-group">
+                <MudTextField @bind-Value="Model.Password" Label="Password" Variant="Variant.Outlined" InputType="InputType.Password" ></MudTextField>
+                    <ValidationMessage For="@(() => Model.Password)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+                <div class="form-group">
+                <MudTextField @bind-Value="Model.ConfirmedPassword" Label="Confirm Password" Variant="Variant.Outlined" InputType="InputType.Password" ></MudTextField>
+                    <ValidationMessage For="@(() => Model.ConfirmedPassword)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
             <div class="form-group">
                 <button type="submit" class="btn btn-success form-save-btn">Save</button>
                 <button type="button" class="btn btn-secondary form-cancel-btn" @onclick=NavBack>Cancel</button>

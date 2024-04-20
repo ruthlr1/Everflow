@@ -13,5 +13,13 @@ namespace Everflow.EventPlanner.Application.Features.People
         public string? LastName { get; set; }
         public string? EmailAddress { get; set; }
         public string? Password { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                return $"{FirstName} {LastName}"; 
+            }
+        }
     }
 }

@@ -24,31 +24,14 @@ namespace Everflow.EventPlanner.Persistence.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            SeedRoles(modelBuilder);
             SeedPeople(modelBuilder);
         }
 
-        private void SeedRoles(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Role>().HasData(
-                Enum.GetValues(typeof(Role.RoleIndex))
-                .Cast<Role.RoleIndex>()
-                .Select(e => new Role()
-                {
-                    RoleId = (int)e,
-                    RoleName = e.ToString(),
-                })
-            );
-        }
 
         private void SeedPeople(ModelBuilder modelBuilder)
         {
-            var person = new Person() { PersonId = -1, FirstName = "John", LastName = "Doe", EmailAddress = "john_blah@gmail.com",  };
+            var person = new Person() { PersonId = -1, FirstName = "John", LastName = "Doe", EmailAddress = "john_doe@gmail.com", Password = "johnDoe1"  };
             modelBuilder.Entity<Person>().HasData(person);
-
-            PersonRole personRole = new PersonRole() { PersonId = -1, RoleId = (int)Role.RoleIndex.Admin };
-            modelBuilder.Entity<PersonRole>().HasData(personRole);
-
         }
     }
 }

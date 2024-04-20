@@ -2,6 +2,7 @@
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace Everflow.EventPlanner.Domain.Features.Events
     public class EventDetail : EntityBase
     {
         public int EventDetailId { get; set; }
+
+        [MaxLength(100)]
         public string? EventDetailDescription { get; set; }
         public DateTime EventDetailDate { get; set; }
         public TimeSpan EventDetailStartTime { get; set; }

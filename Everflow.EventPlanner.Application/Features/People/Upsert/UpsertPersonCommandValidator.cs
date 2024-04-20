@@ -20,6 +20,9 @@ namespace Everflow.EventPlanner.Application.Features.People.Upsert
             When(x => !string.IsNullOrEmpty(x.EmailAddress), () => {
                 RuleFor(x => x.EmailAddress).NotEmpty().Must(x => IsValidEmail(x)).WithMessage("Email address is invalid");
             });
+            When(x => !string.IsNullOrEmpty(x.Password) && x.Password != x.ConfirmedPassword, () => {
+                RuleFor(x => x.ConfirmedPassword).NotEmpty().WithMessage("Confirmed Password must match password");
+            });
         }
 
         private bool IsValidEmail(string? email)

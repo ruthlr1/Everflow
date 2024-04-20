@@ -1,4 +1,5 @@
 ﻿using Everflow.EventPlanner.Application.Common;
+using Everflow.EventPlanner.Application.Features.People.QueryList;
 using Everflow.EventPlanner.Application.Features.People.Upsert;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace Everflow.EventPlanner.Application.Features.People
     {
         Task<UpdateResult> UpsertPerson(UpsertPersonCommand upsertPerson);
         Task<UpsertPersonCommand> GetUpsert(int personId);
+        Task<IList<PersonLookupModel>> GetAllPeople();
     }
 }

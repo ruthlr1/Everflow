@@ -9,13 +9,13 @@ namespace Everflow.EventPlanner.Persistence.EntityConfigurations
     {
         public override void Configure(EntityTypeBuilder<EventDetail> builder)
         {
+            base.Configure(builder);
             builder.ToTable(nameof(EventDetail));
-            builder.Property(x => x.EventDetailDescription).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.EventDetailDescription);
             builder.Property(x => x.EventDetailDate).IsRequired();
             builder.Property(x => x.EventDetailStartTime).IsRequired();
             builder.Property(x => x.EventDetailEndTime).IsRequired();
 
-            base.Configure(builder);
         }
     }
 }

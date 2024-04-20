@@ -21,8 +21,6 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
         {
             try
             {
-
-
                 var result = await PersonService.UpsertPerson(Model);
                 if (result != null && result.NumberRecordsUpdated > 0)
                 {
@@ -32,8 +30,7 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
             }
             catch (Exception ex)
             {
-
-                throw;
+                // todo need tohandle errors into some sort of display for user
             }
         }
 
