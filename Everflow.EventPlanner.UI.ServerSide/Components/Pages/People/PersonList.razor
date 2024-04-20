@@ -8,3 +8,11 @@
 
 
 <button type="button" class="btn btn-primary" @onclick=AddNewClicked>Add New</button>
+
+<MudDataGrid Items="@Model">
+    <Columns>
+        <PropertyColumn Property="x => x.FirstName" Title="First Name" />
+        <PropertyColumn Property="x => x.LastName" Title="Last Name" />
+        <PropertyColumn Property="x => x.EmailAddress" Title="Email Address" />
+    </Columns>
+</MudDataGrid>

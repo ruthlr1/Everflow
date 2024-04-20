@@ -5,18 +5,24 @@
 
 <PageTitle>@($"People[{Id}]")</PageTitle>
 
-<h3>People</h3>
-
-<EditForm Model="Model" OnSubmit="SubmitForm">
-    <Blazored.FluentValidation.FluentValidationValidator />
-
-    
-    <div class="container-create">
+<div class="container-create form-width">
     <div class="row">
         <div class="col">
             <div class="form-group">
-                    <CoreLabel LabelText="First Name" />
-                    <InputText class="form-control form-width" @bind-Value=Model.FirstName />
+                <h3>People</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <EditForm Model="Model" OnSubmit="SubmitForm">
+    <Blazored.FluentValidation.FluentValidationValidator />
+
+    
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <MudTextField @bind-Value="Model.FirstName" Label="First Name" Variant="Variant.Outlined"></MudTextField>
                 <ValidationMessage For="@(() => Model.FirstName)" />
             </div>
         </div>
@@ -24,9 +30,8 @@
 
     <div class="row">
         <div class="col">
-            <div class="form-group">
-                    <CoreLabel LabelText="Last Name" />
-                    <InputText class="form-control form-width" @bind-Value=Model.LastName />
+                <div class="form-group">
+                <MudTextField @bind-Value="Model.LastName" Label="Last Name" Variant="Variant.Outlined"></MudTextField>
                 <ValidationMessage For="@(() => Model.LastName)" />
             </div>
         </div>
@@ -34,9 +39,8 @@
 
     <div class="row">
         <div class="col">
-            <div class="form-group">
-                    <CoreLabel LabelText="Email Address" />
-                    <InputText class="form-control form-width" @bind-Value=Model.EmailAddress />
+                <div class="form-group">
+                <MudTextField @bind-Value="Model.EmailAddress" Label="Email Address" Variant="Variant.Outlined"></MudTextField>
                 <ValidationMessage For="@(() => Model.EmailAddress)" />
             </div>
         </div>
@@ -50,6 +54,6 @@
             </div>
         </div>
     </div>
-    </div>
 
-</EditForm>
+    </EditForm>
+</div>

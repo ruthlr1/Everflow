@@ -62,7 +62,7 @@ h1:focus {
 }
 
 .form-group {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .form-save-btn{
@@ -77,6 +77,4 @@ h1:focus {
     width:140px;
 }
 
-h3{
-    margin-bottom:8px;
-}
+
