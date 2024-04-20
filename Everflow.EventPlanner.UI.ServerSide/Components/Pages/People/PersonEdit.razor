@@ -10,11 +10,13 @@
 <EditForm Model="Model" OnSubmit="SubmitForm">
     <Blazored.FluentValidation.FluentValidationValidator />
 
+    
+    <div class="container-create">
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label>First Name </label>
-                <InputText @bind-Value=Model.FirstName />
+                    <CoreLabel LabelText="First Name" />
+                    <InputText class="form-control form-width" @bind-Value=Model.FirstName />
                 <ValidationMessage For="@(() => Model.FirstName)" />
             </div>
         </div>
@@ -23,8 +25,8 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label>Last Name </label>
-                <InputText @bind-Value=Model.LastName />
+                    <CoreLabel LabelText="Last Name" />
+                    <InputText class="form-control form-width" @bind-Value=Model.LastName />
                 <ValidationMessage For="@(() => Model.LastName)" />
             </div>
         </div>
@@ -33,8 +35,8 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label>Email Address </label>
-                <InputText @bind-Value=Model.EmailAddress />
+                    <CoreLabel LabelText="Email Address" />
+                    <InputText class="form-control form-width" @bind-Value=Model.EmailAddress />
                 <ValidationMessage For="@(() => Model.EmailAddress)" />
             </div>
         </div>
@@ -43,10 +45,11 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <button type="submit" class="btn btn-success mx-2">Save</button>
-                <button type="submit" class="btn btn-secondary mx-2" @onclick=NavBack>Cancel</button>
+                <button type="submit" class="btn btn-success form-save-btn">Save</button>
+                <button type="button" class="btn btn-secondary form-cancel-btn" @onclick=NavBack>Cancel</button>
             </div>
         </div>
+    </div>
     </div>
 
 </EditForm>

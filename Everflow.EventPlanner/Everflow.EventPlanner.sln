@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Everflow.EventPlanner.Appli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Everflow.EventPlanner.API", "..\Everflow.EventPlanner.API\Everflow.EventPlanner.API.csproj", "{87200097-DBEC-4A93-9C66-D3A3F34F3CF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Everflow.EventPlanner.UI.ServerSide", "..\Everflow.EventPlanner.UI.ServerSide\Everflow.EventPlanner.UI.ServerSide.csproj", "{A3518FDC-2D74-4CBF-B64F-874F88B934FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Everflow.EventPlanner.UI.ServerSide", "..\Everflow.EventPlanner.UI.ServerSide\Everflow.EventPlanner.UI.ServerSide.csproj", "{A3518FDC-2D74-4CBF-B64F-874F88B934FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
