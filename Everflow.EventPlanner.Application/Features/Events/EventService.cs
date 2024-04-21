@@ -38,6 +38,13 @@ namespace Everflow.EventPlanner.Application.Features.Events
             return result;
         }
 
+        public async Task<IList<EventDetailLookupModel>> GetMyEventsLookupQuery(int personId)
+        {
+            var result = await _mediator.Send(new GetMyEventsLookupQuery(personId));
+
+            return result;
+        }
+
         public async Task<UpdateResult> UpsertEvents(UpsertEventDetailCommand upsertEventDetail)
         {
             var result = await _mediator.Send(upsertEventDetail);
