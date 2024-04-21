@@ -4,6 +4,7 @@ using MediatR;
 using Everflow.EventPlanner.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Everflow.EventPlanner.API.Register;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,13 +14,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<EverflowContext>(options => options.UseSqlServer(connectionString));
+RegisterContext.Register(builder);
+RegisterServices.Register(builder.Services);
+RegisterToken.Register(builder.Services);
 
-builder.Services.AddScoped<IRequestHandler<GetMyEventsLookupQuery, IList<EventDetailLookupModel>>, GetMyEventsLookupQueryHandler>();
-builder.Services.AddScoped(typeof(IEventService), typeof(EventService));
 
 var app = builder.Build();
 

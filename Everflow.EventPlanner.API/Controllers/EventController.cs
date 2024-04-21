@@ -1,5 +1,6 @@
 ﻿using Everflow.EventPlanner.Application.Features.Events;
 using Everflow.EventPlanner.Application.Features.Events.QueryList;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Everflow.EventPlanner.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class EventController : ControllerBase
     {
         private readonly ILogger<EventController> _logger;

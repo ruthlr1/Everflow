@@ -2,6 +2,7 @@ using Everflow.EventPlanner.Persistence.Database;
 using Everflow.EventPlanner.UI;
 using Everflow.EventPlanner.UI.ServerSide;
 using Everflow.EventPlanner.UI.ServerSide.Components;
+using Everflow.EventPlanner.UI.ServerSide.Register;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
@@ -15,12 +16,10 @@ builder.Services.AddRazorComponents()
         o.DetailedErrors = true;
     }); ;
 
-// register db context
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<EverflowContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddMudServices();
 
-ServiceRegistry.Register(builder.Services);
+RegisterContext.Register(builder);
+RegisterServices.Register(builder.Services);
 
 var app = builder.Build();
 
