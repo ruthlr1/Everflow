@@ -34,9 +34,12 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
             }
         }
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            return base.OnInitializedAsync();
+            if (Id > 0)
+            {
+                Model = await PersonService.GetUpsert(Id);
+            }
         }
 
         public void NavBack()

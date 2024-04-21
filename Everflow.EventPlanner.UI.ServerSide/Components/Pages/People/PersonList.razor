@@ -26,5 +26,11 @@
         <PropertyColumn Property="x => x.FirstName" Title="First Name" />
         <PropertyColumn Property="x => x.LastName" Title="Last Name" />
         <PropertyColumn Property="x => x.EmailAddress" Title="Email Address" />
+
+        <TemplateColumn StickyRight="true">
+            <CellTemplate>
+                <MudIconButton Icon="@Icons.Material.Outlined.Edit" Size="@Size.Small" OnClick="@(() => EditRecord(context.Item))" />
+            </CellTemplate>
+        </TemplateColumn>
     </Columns>
 </MudDataGrid>

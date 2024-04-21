@@ -1,0 +1,10 @@
+﻿@inherits PersonSelectorBase
+
+@using Everflow.EventPlanner.Application.Features.People.QueryList
+
+<MudSelect T="PersonLookupModel" MultiSelection="true" @bind-SelectedValues="SelectedPeople" ToStringFunc="@PersonName" Label="Attendees" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable>
+    @foreach(var p in Model)
+    {
+        <MudSelectItem Value="@p" />
+    }
+</MudSelect>

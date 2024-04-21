@@ -17,7 +17,7 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages
 
         public void AddNewClicked()
         {
-            NavigationManager.NavigateTo("/people/new");
+            NavigationManager.NavigateTo("/events/new");
         }
 
         public IList<EventDetailLookupModel> Model { get; set; } = new List<EventDetailLookupModel>();
@@ -37,6 +37,12 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages
         {
             DateTime filterDate = ShowUpcomingEventsToggle ? DateTime.Now : DateTime.MinValue;
             Model = await EventService.GetListAllEvents(filterDate);
+            await InvokeAsync(StateHasChanged);
+        }
+
+        public void EditRecord(EventDetailLookupModel item)
+        {
+            NavigationManager.NavigateTo($"/events/{item.EventDetailId}");
         }
     }
 }

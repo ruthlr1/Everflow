@@ -12,8 +12,8 @@ namespace Everflow.EventPlanner.Domain.Features.Events
     {
         public int EventPersonId { get; set; }
         public int EventDetailId { get; set; }
-        public required EventDetail EventDetail { get; set; }
+        public EventDetail EventDetail { get; set; }
         public int PersonId { get; set; }
-        public required Person Person { get; set; }
+        public Person Person { get; set; }
     }
 }

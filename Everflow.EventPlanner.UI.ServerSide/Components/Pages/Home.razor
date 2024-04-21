@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col">
         <div class="form-group">
-            <MudSwitch @bind-Value="@ShowUpcomingEventsToggle" Label="Show Upcoming Events" Color="Color.Success" CheckedChanged="@(async (bool v) => await RefreshData())" />
+            <MudSwitch @bind-Value="@ShowUpcomingEventsToggle" Label="Show Upcoming Events" Color="Color.Success" />
         </div>
     </div>
 </div>
@@ -26,4 +26,20 @@
         </div>
     </div>
 </div>
+
+<MudDataGrid Items="@Model">
+    <Columns>
+        <PropertyColumn Property="x => x.EventDetailDescription" Title="Description" />
+        <PropertyColumn Property="x => x.EventDetailDate" Title="Date" SortBy="@(x => x.EventDetailDate)" />
+        <PropertyColumn Property="x => x.EventDetailStartTime" Title="Start Time" />
+        <PropertyColumn Property="x => x.EventDetailEndTime" Title="End time" />
+        <PropertyColumn Property="x => x.PeopleAttending" Title="Antendees" />
+
+        <TemplateColumn StickyRight="true" >
+            <CellTemplate>
+                <MudIconButton Icon="@Icons.Material.Outlined.Edit" Size="@Size.Small" OnClick="@(() => EditRecord(context.Item))" />
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
 

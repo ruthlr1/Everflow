@@ -18,9 +18,9 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                     EventDetailId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EventDetailDescription = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    EventDetailDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EventDetailStartTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    EventDetailEndTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    EventDetailDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EventDetailStartTime = table.Column<TimeSpan>(type: "time", nullable: true),
+                    EventDetailEndTime = table.Column<TimeSpan>(type: "time", nullable: true),
                     CreatedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -46,7 +46,7 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventPerson",
+                name: "EventPersons",
                 columns: table => new
                 {
                     EventPersonId = table.Column<int>(type: "int", nullable: false)
@@ -57,15 +57,15 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventPerson", x => x.EventPersonId);
+                    table.PrimaryKey("PK_EventPersons", x => x.EventPersonId);
                     table.ForeignKey(
-                        name: "FK_EventPerson_EventDetails_EventDetailId",
+                        name: "FK_EventPersons_EventDetails_EventDetailId",
                         column: x => x.EventDetailId,
                         principalTable: "EventDetails",
                         principalColumn: "EventDetailId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EventPerson_People_PersonId",
+                        name: "FK_EventPersons_People_PersonId",
                         column: x => x.PersonId,
                         principalTable: "People",
                         principalColumn: "PersonId",
@@ -75,16 +75,16 @@ namespace Everflow.EventPlanner.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "People",
                 columns: new[] { "PersonId", "CreatedDateTime", "EmailAddress", "FirstName", "LastName", "Password" },
-                values: new object[] { -1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "john_doe@gmail.com", "John", "Doe", "johnDoe1" });
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "john_doe@gmail.com", "John", "Doe", "johnDoe1" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventPerson_EventDetailId",
-                table: "EventPerson",
+                name: "IX_EventPersons_EventDetailId",
+                table: "EventPersons",
                 column: "EventDetailId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventPerson_PersonId",
-                table: "EventPerson",
+                name: "IX_EventPersons_PersonId",
+                table: "EventPersons",
                 column: "PersonId");
         }
 
@@ -92,7 +92,7 @@ namespace Everflow.EventPlanner.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EventPerson");
+                name: "EventPersons");
 
             migrationBuilder.DropTable(
                 name: "EventDetails");

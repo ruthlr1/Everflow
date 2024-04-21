@@ -18,8 +18,13 @@ namespace Everflow.EventPlanner.Application.Features.People
         {
             get
             {
-                return $"{FirstName} {LastName}"; 
+                return GetName(FirstName, LastName); 
             }
+        }
+
+        public static string GetName(string? firstName, string? lastName)
+        {
+            return $"{firstName} {lastName}";
         }
     }
 }

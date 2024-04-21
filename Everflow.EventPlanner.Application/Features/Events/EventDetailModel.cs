@@ -10,8 +10,8 @@ namespace Everflow.EventPlanner.Application.Features.Events
     {
         public int EventDetailId { get; set; }
         public string? EventDetailDescription { get; set; }
-        public DateTime EventDetailDate { get; set; }
-        public TimeSpan EventDetailStartTime { get; set; }
-        public TimeSpan EventDetailEndTime { get; set; }
+        public DateTime? EventDetailDate { get; set; }
+        public TimeSpan? EventDetailStartTime { get; set; }
+        public TimeSpan? EventDetailEndTime { get; set; }
     }
 }

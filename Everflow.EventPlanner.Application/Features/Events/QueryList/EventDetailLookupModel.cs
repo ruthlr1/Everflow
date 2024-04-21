@@ -9,5 +9,6 @@ namespace Everflow.EventPlanner.Application.Features.Events.QueryList
 {
     public class EventDetailLookupModel : EventDetailModel
     {
+        public string PeopleAttending { get; set; }
     }
 }

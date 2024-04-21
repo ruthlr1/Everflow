@@ -15,10 +15,10 @@ namespace Everflow.EventPlanner.Domain.Features.Events
 
         [MaxLength(100)]
         public string? EventDetailDescription { get; set; }
-        public DateTime EventDetailDate { get; set; }
-        public TimeSpan EventDetailStartTime { get; set; }
-        public TimeSpan EventDetailEndTime { get; set; }
+        public DateTime? EventDetailDate { get; set; }
+        public TimeSpan? EventDetailStartTime { get; set; }
+        public TimeSpan? EventDetailEndTime { get; set; }
 
-        public virtual ICollection<EventPerson> EventPersons { get; set;}
+        public virtual ICollection<EventPerson>? EventPersons { get; set;}
     }
 }

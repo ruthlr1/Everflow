@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Everflow.EventPlanner.Application.Features.Events;
 using Everflow.EventPlanner.Application.Features.Events.Upsert;
+using Everflow.EventPlanner.Application.Features.People;
 
 namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages
 {
@@ -29,9 +30,12 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages
             }
         }
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            return base.OnInitializedAsync();
+            if (Id > 0)
+            {
+                Model = await EventService.GetEventDetail(Id);
+            }
         }
 
         public void NavBack()

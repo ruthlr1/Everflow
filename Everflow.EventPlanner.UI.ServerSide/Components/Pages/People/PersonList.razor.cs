@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Everflow.EventPlanner.Application.Features.People;
+﻿using Everflow.EventPlanner.Application.Features.People;
 using Everflow.EventPlanner.Application.Features.People.QueryList;
 using Everflow.EventPlanner.UI.ServerSide.Components.Pages.Common;
 using Microsoft.AspNetCore.Components;
@@ -24,6 +19,12 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
         protected override async Task OnInitializedAsync()
         {
             Model = await PersonService.GetAllPeople();
+        }
+
+
+        public void EditRecord(PersonLookupModel item)
+        {
+            NavigationManager.NavigateTo($"/people/{item.PersonId}");
         }
     }
 }

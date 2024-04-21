@@ -5,6 +5,7 @@ using Everflow.EventPlanner.Application.Features.People.QueryList;
 using Everflow.EventPlanner.Domain.Features.Events;
 using Everflow.EventPlanner.Persistence.Database;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
 {
     public class UpsertEventDetailCommand : EventDetailModel, IRequest<UpdateResult>
     {
-        public IList<PersonLookupModel> PeopleAttending { get; set; }
+        public IEnumerable<int> PersonIdsAttending { get; set; }
     }
 
     public class UpsertEventDetailCommandMapper
@@ -31,7 +32,7 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
 
             if (eventDetail.EventPersons != null && eventDetail.EventPersons.Any())
             {
-                cmd.PeopleAttending = eventDetail.EventPersons.Select(x => new PersonLookupModel() { FirstName = x.Person.FirstName, LastName = x.Person.LastName }).ToList();
+                cmd.PersonIdsAttending = eventDetail.EventPersons.Select(x => x.PersonId).ToList();
             }
 
             return cmd;
@@ -56,7 +57,7 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
 
             if (!addNew)
             {
-                dbModel = _context.EventDetails.Where(x => x.EventDetailId == request.EventDetailId).FirstOrDefault();
+                dbModel = _context.EventDetails.Include(x => x.EventPersons).Where(x => x.EventDetailId == request.EventDetailId).FirstOrDefault();
                 if (dbModel == null)
                     throw new EntityNotFoundException(nameof(EventDetail), request.EventDetailId);
             }
@@ -65,6 +66,38 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
             dbModel.EventDetailDate = request.EventDetailDate;
             dbModel.EventDetailStartTime = request.EventDetailStartTime;
             dbModel.EventDetailEndTime = request.EventDetailEndTime;
+
+            if(request.PersonIdsAttending.Any())
+            {
+                if(dbModel.EventPersons != null)
+                {
+                    // some exist so
+                    // lets delete the ones not used
+                    foreach(var evntPerson in dbModel.EventPersons.Where(x => !request.PersonIdsAttending.Contains(x.PersonId)))
+                    {
+                        _context.EventPersons.Remove(evntPerson);
+                    }
+
+                    // lets add the ones that dont exist
+                    foreach (var personId in request.PersonIdsAttending.Where(x => !dbModel.EventPersons.Any(p => p.PersonId == x)))
+                    {
+                        dbModel.EventPersons.Add(new EventPerson() { PersonId = personId });
+                    }
+                }
+                else
+                {
+                    // none exists so add all
+                    dbModel.EventPersons = request.PersonIdsAttending.Select(x => new EventPerson() { PersonId = x }).ToList();
+                }
+            }
+            else
+            {
+                if(dbModel.EventPersons != null && dbModel.EventPersons.Any())
+                {
+                    // remove all
+                    _context.EventPersons.RemoveRange(dbModel.EventPersons);
+                }
+            }
 
             if (addNew)
             {

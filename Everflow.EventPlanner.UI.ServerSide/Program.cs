@@ -9,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+    .AddInteractiveServerComponents()
+    .AddCircuitOptions(o =>
+    {
+        o.DetailedErrors = true;
+    }); ;
 
 // register db context
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

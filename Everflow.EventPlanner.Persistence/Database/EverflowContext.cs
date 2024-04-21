@@ -21,6 +21,7 @@ namespace Everflow.EventPlanner.Persistence.Database
 
         public DbSet<Person> People { get; set; }
         public DbSet<EventDetail> EventDetails { get; set; }
+        public DbSet<EventPerson> EventPersons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,7 +31,7 @@ namespace Everflow.EventPlanner.Persistence.Database
 
         private void SeedPeople(ModelBuilder modelBuilder)
         {
-            var person = new Person() { PersonId = -1, FirstName = "John", LastName = "Doe", EmailAddress = "john_doe@gmail.com", Password = "johnDoe1"  };
+            var person = new Person() { PersonId = 1, FirstName = "John", LastName = "Doe", EmailAddress = "john_doe@gmail.com", Password = "johnDoe1"  };
             modelBuilder.Entity<Person>().HasData(person);
         }
     }

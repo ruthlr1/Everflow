@@ -1,5 +1,6 @@
 ﻿@inherits EventDetailEditBase
 
+@using Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
 
 @page "/events/new"
 @page "/events/{Id:int}"
@@ -10,7 +11,7 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <h3>events</h3>
+                <h3>Event</h3>
             </div>
         </div>
     </div>
@@ -32,7 +33,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <MudDatePicker @bind-Value="Model.EventDetailDate" Label="Date" Variant="Variant.Outlined"></MudDatePicker>
+                    <MudDatePicker @bind-Date="Model.EventDetailDate" Label="Date" Variant="Variant.Outlined"></MudDatePicker>
                     <ValidationMessage For="@(() => Model.EventDetailDate)" />
                 </div>
             </div>
@@ -41,7 +42,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <MudTimePicker @bind-Value="Model.EventDetailStartTime" Label="Start Time" Variant="Variant.Outlined"></MudTimePicker>
+                    <MudTimePicker @bind-time="Model.EventDetailStartTime" Label="Start Time" AmPm="true" Variant="Variant.Outlined"></MudTimePicker>
                     <ValidationMessage For="@(() => Model.EventDetailStartTime)" />
                 </div>
             </div>
@@ -50,7 +51,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <MudTimePicker @bind-Value="Model.EventDetailEndTime" Label="End Time" Variant="Variant.Outlined"></MudTimePicker>
+                    <MudTimePicker @bind-time="Model.EventDetailEndTime" Label="End Time" AmPm="true" Variant="Variant.Outlined"></MudTimePicker>
                     <ValidationMessage For="@(() => Model.EventDetailEndTime)" />
                 </div>
             </div>
@@ -59,12 +60,8 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <MudSelect T="string" Label="US States" MultiSelection="true" @bind-Value="value" @bind-SelectedValues="options">
-                        @foreach (var state in states)
-                        {
-                            <MudSelectItem T="Int32" Value="@state">@state</MudSelectItem>
-                        }
-                    </MudSelect>
+                    <PersonSelector @bind-SelectedPersonIds="Model.PersonIdsAttending" />
+                    <ValidationMessage For="@(() => Model.PersonIdsAttending)" />
                 </div>
             </div>
         </div>

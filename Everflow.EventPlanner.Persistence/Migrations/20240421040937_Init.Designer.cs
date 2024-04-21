@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Everflow.EventPlanner.Persistence.Migrations
 {
     [DbContext(typeof(EverflowContext))]
-    [Migration("20240420231419_Init")]
+    [Migration("20240421040937_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -36,17 +36,17 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EventDetailDate")
+                    b.Property<DateTime?>("EventDetailDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EventDetailDescription")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<TimeSpan>("EventDetailEndTime")
+                    b.Property<TimeSpan?>("EventDetailEndTime")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan>("EventDetailStartTime")
+                    b.Property<TimeSpan?>("EventDetailStartTime")
                         .HasColumnType("time");
 
                     b.HasKey("EventDetailId");
@@ -77,7 +77,7 @@ namespace Everflow.EventPlanner.Persistence.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("EventPerson");
+                    b.ToTable("EventPersons");
                 });
 
             modelBuilder.Entity("Everflow.EventPlanner.Domain.Features.People.Person", b =>
@@ -114,7 +114,7 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            PersonId = -1,
+                            PersonId = 1,
                             CreatedDateTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmailAddress = "john_doe@gmail.com",
                             FirstName = "John",
