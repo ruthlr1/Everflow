@@ -26,7 +26,7 @@ namespace Everflow.EventPlanner.API.Controllers
 
 
         [HttpGet]
-        public async Task<IList<EventDetailLookupModel>> GetMyEvents(int personId)
+        public async Task<IList<EventDetailLookupModel>> Get(int personId)
         {
             return await _eventService.GetMyEventsLookupQuery(personId);
         }
