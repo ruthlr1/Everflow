@@ -1,9 +1,5 @@
-using Everflow.EventPlanner.Persistence.Database;
-using Everflow.EventPlanner.UI;
-using Everflow.EventPlanner.UI.ServerSide;
 using Everflow.EventPlanner.UI.ServerSide.Components;
 using Everflow.EventPlanner.UI.ServerSide.Register;
-using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
