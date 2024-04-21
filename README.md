@@ -1,5 +1,7 @@
 # Everflow
 
+I have created a server side blazor project because I am more familiar of the lifecycle. 
+
 Setup:
 - There are two "appsettings.json" files in the {Everflow.EventPlanner.UI.ServerSide project, Everflow.EventPlanner.API} projects. Which have a default connection string to local sql server. 
   This must be changed to your local sql server instance and database. Note the database must have been already created in the sql instance even though its empty. 
