@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Everflow.EventPlanner.Application.Features.Events.Upsert
 {
-    public class UpsertEventDetailValidator : AbstractValidator<UpsertEventDetailCommand>
+    public class UpsertEventDetailCommandValidator : AbstractValidator<UpsertEventDetailCommand>
     {
-        public UpsertEventDetailValidator()
+        public UpsertEventDetailCommandValidator()
         {
-            RuleFor(x => x.EventDetailDescription).NotEmpty();
+            RuleFor(x => x.EventDetailDescription).NotEmpty().MaximumLength(100);
             RuleFor(x => x.EventDetailDate).NotEmpty();
             RuleFor(x => x.EventDetailStartTime).NotEmpty();
             RuleFor(x => x.EventDetailEndTime).NotEmpty().GreaterThan(x => x.EventDetailStartTime);

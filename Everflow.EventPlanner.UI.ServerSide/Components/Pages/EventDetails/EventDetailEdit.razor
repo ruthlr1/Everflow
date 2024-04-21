@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <MudTextField @bind-Value="Model.EventDetailDescription" Label="Description" Variant="Variant.Outlined"></MudTextField>
+                    <MudTextField @bind-Value="Model.EventDetailDescription" Label="Description" Variant="Variant.Outlined" Lines="5"></MudTextField>
                     <ValidationMessage For="@(() => Model.EventDetailDescription)" />
                 </div>
             </div>

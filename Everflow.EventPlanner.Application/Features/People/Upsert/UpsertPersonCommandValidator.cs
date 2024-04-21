@@ -12,10 +12,10 @@ namespace Everflow.EventPlanner.Application.Features.People.Upsert
     {
         public UpsertPersonCommandValidator()
         {
-            RuleFor(x => x.FirstName).NotEmpty();
-            RuleFor(x => x.LastName).NotEmpty();
-            RuleFor(x => x.EmailAddress).NotEmpty();
-            RuleFor(x => x.Password).NotEmpty();
+            RuleFor(x => x.FirstName).NotEmpty().MaximumLength(150);
+            RuleFor(x => x.LastName).NotEmpty().MaximumLength(150);
+            RuleFor(x => x.EmailAddress).NotEmpty().MaximumLength(150);
+            RuleFor(x => x.Password).NotEmpty().MaximumLength(150);
 
             When(x => !string.IsNullOrEmpty(x.EmailAddress), () => {
                 RuleFor(x => x.EmailAddress).NotEmpty().Must(x => IsValidEmail(x)).WithMessage("Email address is invalid");
