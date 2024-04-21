@@ -1,5 +1,7 @@
 ﻿using Everflow.EventPlanner.Application.Common;
 using Everflow.EventPlanner.Application.Features.Events;
+using Everflow.EventPlanner.Application.Features.Events.QueryList;
+using Everflow.EventPlanner.Application.Features.Events.Upsert;
 using Everflow.EventPlanner.Application.Features.People;
 using Everflow.EventPlanner.Application.Features.People.Upsert;
 using MediatR;
@@ -26,11 +28,12 @@ namespace Everflow.EventPlanner.UI.ServerSide
             services.AddScoped(typeof(IPersonService), typeof(PersonService));
 
 
+            services.AddScoped<IRequestHandler<UpsertEventDetailCommand, UpdateResult>, UpsertEventDetailCommandHandler>();
+            services.AddScoped<IRequestHandler<GetEventDetailLookupQuery, IList<EventDetailLookupModel>>, GetEventDetailLookupQueryHandler>();
             services.AddScoped(typeof(IEventService), typeof(EventService));
 
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         }
-
     }
 }

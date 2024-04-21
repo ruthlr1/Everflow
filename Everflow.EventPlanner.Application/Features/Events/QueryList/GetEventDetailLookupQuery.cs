@@ -12,7 +12,11 @@ namespace Everflow.EventPlanner.Application.Features.Events.QueryList
 {
     public class GetEventDetailLookupQuery : IRequest<IList<EventDetailLookupModel>>
     {
-
+        public DateTime EventsAfter { get; set; }
+        public GetEventDetailLookupQuery(DateTime eventsAfter)
+        {
+            EventsAfter = eventsAfter;
+        }
     }
     public class GetEventDetailLookupQueryHandler : IRequestHandler<GetEventDetailLookupQuery, IList<EventDetailLookupModel>>
     {
@@ -26,7 +30,7 @@ namespace Everflow.EventPlanner.Application.Features.Events.QueryList
 
         public async Task<IList<EventDetailLookupModel>> Handle(GetEventDetailLookupQuery request, CancellationToken cancellationToken)
         {
-            var query = _context.EventDetails.Include(x => x.EventPersons).ThenInclude(x => x.Person).AsNoTracking().AsQueryable();
+            var query = _context.EventDetails.Include(x => x.EventPersons).ThenInclude(x => x.Person).AsNoTracking().Where(x => x.EventDetailDate >= request.EventsAfter).AsQueryable();
 
 
             return await query.Select(x => new EventDetailLookupModel() 

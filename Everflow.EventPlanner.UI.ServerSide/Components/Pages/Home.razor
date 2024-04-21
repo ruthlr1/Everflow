@@ -1,8 +1,29 @@
 ﻿@page "/"
+@inherits HomeBase
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Events</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <h3>Events</h3>
+        </div>
+    </div>
+</div>
 
-Welcome to your new app.
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <MudSwitch @bind-Value="@ShowUpcomingEventsToggle" Label="Show Upcoming Events" Color="Color.Success" CheckedChanged="@(async (bool v) => await RefreshData())" />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" @onclick=AddNewClicked>Add New</button>
+        </div>
+    </div>
+</div>
 

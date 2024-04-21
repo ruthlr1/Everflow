@@ -37,9 +37,9 @@ namespace Everflow.EventPlanner.Application.Features.Events
             return UpsertEventDetailCommandMapper.MapFromDB(dbModel);
         }
 
-        public async Task<IList<EventDetailLookupModel>> GetListAllEvents()
+        public async Task<IList<EventDetailLookupModel>> GetListAllEvents(DateTime eventsAfter)
         {
-            var result = await _mediator.Send(new GetEventDetailLookupQuery());
+            var result = await _mediator.Send(new GetEventDetailLookupQuery(eventsAfter));
 
             return result;
         }

@@ -4,10 +4,22 @@
 
 <PageTitle>People</PageTitle>
 
-<h3>People</h3>
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <h3>People</h3>
+        </div>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" @onclick=AddNewClicked>Add New</button>
+        </div>
+    </div>
+</div>
 
-<button type="button" class="btn btn-primary" @onclick=AddNewClicked>Add New</button>
 
 <MudDataGrid Items="@Model">
     <Columns>

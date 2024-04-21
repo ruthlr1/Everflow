@@ -11,7 +11,7 @@ namespace Everflow.EventPlanner.Application.Features.Events
 {
     public interface IEventService
     {
-        Task<IList<EventDetailLookupModel>> GetListAllEvents();
+        Task<IList<EventDetailLookupModel>> GetListAllEvents(DateTime eventsAfter);
         Task<UpsertEventDetailCommand> GetEventDetail(int eventDetailId);
         Task<UpdateResult> UpsertEvents(UpsertEventDetailCommand upsertEventDetail);
     }
