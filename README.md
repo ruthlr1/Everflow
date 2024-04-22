@@ -19,7 +19,7 @@ In my current employment, we use dev express to implement UI components to save 
 
 Security:
 To be honest, I am not an expert in secuirty. This is one aspect of the software development that I would like to learn more about. 
-I have implemented a bearer token authentication on the API project. I would expect that a mobile client could call this api to so an individual user can see the events that have been assigned to them. 
+I have implemented a bearer token authentication on the API project. I have persisted a person into the database {'John Doe', email='john_doe@gmail.com', password='johnDoe1'}, this person can be used to authenticate the api. I would expect that a mobile client could call this api to so an individual user can see the events that have been assigned to them. 
 Due to time constraints, I couldn't implement;
 - Log in functionality into the main app.
 - Hashing user passwords in database. 
