@@ -10,6 +10,13 @@ namespace Everflow.EventPlanner.Persistence.Common
         {
             builder.Property(t => t.CreatedDateTime)
                 .HasDefaultValueSql("GETDATE()");
+
+            Type type = typeof(TEntity);
+            foreach(var prop in  type.GetProperties())
+            {
+                if(prop.PropertyType == typeof(string))
+                    builder.Property(prop.Name).HasMaxLength(150);
+            }
         }
     }
 }

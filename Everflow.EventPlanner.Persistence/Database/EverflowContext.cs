@@ -25,6 +25,8 @@ namespace Everflow.EventPlanner.Persistence.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EverflowContext).Assembly);
+
             SeedPeople(modelBuilder);
         }
 

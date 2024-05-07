@@ -13,16 +13,12 @@ namespace Everflow.EventPlanner.Domain.Features.People
     {
         public int PersonId { get; set; }
 
-        [MaxLength(150)]
         public string? FirstName { get; set; }
 
-        [MaxLength(150)]
         public string? LastName { get; set; }
 
-        [MaxLength(150)]
         public string? EmailAddress { get; set; }
 
-        [MaxLength(150)]
         public string? Password { get; set; }
 
 

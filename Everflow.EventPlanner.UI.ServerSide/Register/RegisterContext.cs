@@ -8,7 +8,7 @@ namespace Everflow.EventPlanner.UI.ServerSide.Register
         public static void Register(WebApplicationBuilder builder)
         {
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<EverflowContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<EverflowContext>(options => options.UseSqlServer(connectionString),ServiceLifetime.Transient);
         }
     }
 }

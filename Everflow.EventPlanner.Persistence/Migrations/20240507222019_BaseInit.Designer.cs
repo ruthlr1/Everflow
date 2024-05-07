@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Everflow.EventPlanner.Persistence.Migrations
 {
     [DbContext(typeof(EverflowContext))]
-    [Migration("20240421040937_Init")]
-    partial class Init
+    [Migration("20240507222019_BaseInit")]
+    partial class BaseInit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,9 +34,12 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventDetailId"));
 
                     b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<DateTime?>("EventDetailDate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EventDetailDescription")
@@ -44,14 +47,16 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<TimeSpan?>("EventDetailEndTime")
+                        .IsRequired()
                         .HasColumnType("time");
 
                     b.Property<TimeSpan?>("EventDetailStartTime")
+                        .IsRequired()
                         .HasColumnType("time");
 
                     b.HasKey("EventDetailId");
 
-                    b.ToTable("EventDetails");
+                    b.ToTable("EventDetail", (string)null);
                 });
 
             modelBuilder.Entity("Everflow.EventPlanner.Domain.Features.Events.EventPerson", b =>
@@ -63,7 +68,9 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventPersonId"));
 
                     b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<int>("EventDetailId")
                         .HasColumnType("int");
@@ -75,9 +82,10 @@ namespace Everflow.EventPlanner.Persistence.Migrations
 
                     b.HasIndex("EventDetailId");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("PersonId", "EventDetailId")
+                        .IsUnique();
 
-                    b.ToTable("EventPersons");
+                    b.ToTable("EventPerson", (string)null);
                 });
 
             modelBuilder.Entity("Everflow.EventPlanner.Domain.Features.People.Person", b =>
@@ -89,7 +97,9 @@ namespace Everflow.EventPlanner.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonId"));
 
                     b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("EmailAddress")
                         .HasMaxLength(150)
@@ -109,7 +119,7 @@ namespace Everflow.EventPlanner.Persistence.Migrations
 
                     b.HasKey("PersonId");
 
-                    b.ToTable("People");
+                    b.ToTable("Person", (string)null);
 
                     b.HasData(
                         new

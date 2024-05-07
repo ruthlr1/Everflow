@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Everflow.EventPlanner.Persistence.Common;
+using Everflow.EventPlanner.Domain.Features.Events;
 
 namespace Everflow.EventPlanner.Persistence.EntityConfigurations
 {
-    public class PersonConfiguration : IEntityTypeConfiguration<Person>
+    public class PersonConfiguration : EntityBaseConfiguration<Person>
     {
-        public void Configure(EntityTypeBuilder<Person> builder)
+        public override void Configure(EntityTypeBuilder<Person> builder)
         {
+            base.Configure(builder);
             builder.ToTable(nameof(Person));
             builder.Property(x => x.FirstName);
             builder.Property(x => x.LastName);
             builder.Property(x => x.EmailAddress);
             builder.Property(x => x.Password);
-
         }
     }
 }

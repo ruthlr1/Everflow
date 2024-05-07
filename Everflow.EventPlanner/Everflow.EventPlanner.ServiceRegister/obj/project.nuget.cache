@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "sCaibhQjknxEZKT23rgN67prO1zzzou/rBVVD0oQRkM2VbcAWscDp4NHRtpOMWekXExR3hTECWft+h4C8qH0bA==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\UK\\GIT\\Everflow\\Everflow.EventPlanner\\Everflow.EventPlanner.ServiceRegister\\Everflow.EventPlanner.ServiceRegister.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lachl\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\system.security.cryptography.protecteddata\\6.0.0\\system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
+    "C:\\Users\\lachl\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

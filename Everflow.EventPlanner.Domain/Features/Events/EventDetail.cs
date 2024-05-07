@@ -13,7 +13,6 @@ namespace Everflow.EventPlanner.Domain.Features.Events
     {
         public int EventDetailId { get; set; }
 
-        [MaxLength(100)]
         public string? EventDetailDescription { get; set; }
         public DateTime? EventDetailDate { get; set; }
         public TimeSpan? EventDetailStartTime { get; set; }

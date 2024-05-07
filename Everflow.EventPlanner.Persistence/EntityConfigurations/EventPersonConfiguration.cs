@@ -22,6 +22,9 @@ namespace Everflow.EventPlanner.Persistence.EntityConfigurations
 
             builder.HasIndex(x => new { x.PersonId, x.EventDetailId }).IsUnique();
 
+            builder.HasOne(x => x.Person).WithMany(x => x.EventPersons).HasForeignKey(x => x.PersonId);
+            builder.HasOne(x => x.EventDetail).WithMany(x => x.EventPersons).HasForeignKey(x => x.EventDetailId);
+
         }
     }
 }
