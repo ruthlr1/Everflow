@@ -69,6 +69,7 @@ namespace Everflow.EventPlanner.Application.Features.People.Upsert
 
             UpdateResult updateResult = new UpdateResult();
             updateResult.NumberRecordsUpdated = await _context.SaveChangesAsync(cancellationToken);
+            updateResult.Id = dbModel?.PersonId;
 
             return updateResult;
 

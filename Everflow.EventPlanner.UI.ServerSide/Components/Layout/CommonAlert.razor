@@ -1,0 +1,43 @@
+﻿@using Everflow.EventPlanner.Application.Features.Alerts
+
+@if (IsVisble)
+{
+    <MudAlert Severity="@SeverityType" Variant="Variant.Filled" ShowCloseIcon="true" CloseIconClicked=OnCloseAlert>@Message</MudAlert>
+}
+
+@code {
+    [Inject] public AlertService AlertService { get; set; }
+    private bool IsVisble { get; set; } = false;
+    private Severity SeverityType { get; set; } = Severity.Success;
+    private string Message { get; set; } = "";
+
+
+    protected override void OnInitialized()
+    {
+        AlertService.MessageDisposed += OnCloseAlert;
+        AlertService.MessageEvent += ShowAlert;
+    }
+
+    private void OnCloseAlert()
+    {
+        IsVisble = false;
+        StateHasChanged();
+    }
+
+    private void ShowAlert(AlertMessageModel alertModel)
+    {
+        switch(alertModel.AlertType)
+        {
+            case AlertType.AlertTypeIndex.Success:
+                SeverityType = Severity.Success;
+                break;
+            case AlertType.AlertTypeIndex.Failure:
+                SeverityType = Severity.Error;
+                break;
+        }
+
+        Message = alertModel.Message;
+        IsVisble = true;
+        StateHasChanged();
+    }
+}

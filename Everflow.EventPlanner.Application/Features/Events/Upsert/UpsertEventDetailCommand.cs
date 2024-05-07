@@ -67,7 +67,7 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
             dbModel.EventDetailStartTime = request.EventDetailStartTime;
             dbModel.EventDetailEndTime = request.EventDetailEndTime;
 
-            if(request.PersonIdsAttending.Any())
+            if(request.PersonIdsAttending != null && request.PersonIdsAttending.Any())
             {
                 if(dbModel.EventPersons != null)
                 {
@@ -106,6 +106,7 @@ namespace Everflow.EventPlanner.Application.Features.Events.Upsert
 
             UpdateResult updateResult = new UpdateResult();
             updateResult.NumberRecordsUpdated = await _context.SaveChangesAsync(cancellationToken);
+            updateResult.Id = dbModel?.EventDetailId;
 
             return updateResult;
 

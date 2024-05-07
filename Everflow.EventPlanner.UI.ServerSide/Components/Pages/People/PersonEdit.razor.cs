@@ -22,15 +22,16 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
             try
             {
                 var result = await PersonService.UpsertPerson(Model);
-                if (result != null && result.NumberRecordsUpdated > 0)
+                if (result != null && result.IsSuccess)
                 {
                     NavBack();
+                    AlertService.SetSuccessMessage(base.DefaultSuccessMessage(Id, "Person"));
                 }
 
             }
             catch (Exception ex)
             {
-                // todo need tohandle errors into some sort of display for user
+                AlertService.SetErrorMessage(ex);
             }
         }
 
@@ -40,6 +41,8 @@ namespace Everflow.EventPlanner.UI.ServerSide.Components.Pages.People
             {
                 Model = await PersonService.GetUpsert(Id);
             }
+
+            await base.OnInitializedAsync();
         }
 
         public void NavBack()
